@@ -1,8 +1,8 @@
-# Dermographic Tattoo — portfolio demonstracyjne
+# Dermographic Tattoo — portfolio Wojciecha Sokuna
 
 Wersja online: [tatara-kj.github.io/dermographic-tattoo](https://tatara-kj.github.io/dermographic-tattoo/)
 
-Kompletna, lokalna implementacja serwisu portfolio w Next.js 16, React 19 i TypeScript. Projekt jest oparty na materiałach strategicznych z katalogu nadrzędnego, ale celowo nie publikuje niepotwierdzonych danych kontaktowych ani cudzych zdjęć.
+Kompletna implementacja serwisu portfolio w Next.js 16, React 19 i TypeScript. Projekt wykorzystuje fotografie prac opublikowane na oficjalnym profilu Instagram Wojciecha Sokuna i prowadzi z każdej realizacji do źródłowego posta.
 
 ## Uruchomienie
 
@@ -46,17 +46,9 @@ Adres, telefon, e-mail, godziny pracy, aktywne kanały kontaktu oraz możliwoś�
 
 ## Zdjęcia portfolio
 
-Wszystkie kafle są abstrakcyjnymi placeholderami CSS i jasno informują, że nie przedstawiają realnej pracy. Nie pobrano żadnych zdjęć z Google Maps, Instagrama ani innych zewnętrznych profili.
+Galeria korzysta z dwunastu fotografii z oficjalnego konta `@dermographictattoo_stg`. Pliki znajdują się w `public/work/`, a rekordy w `src/data/portfolio.ts` zawierają opisy alternatywne oraz odnośniki do źródłowych publikacji. Przed komercyjnym przekazaniem strony należy uzyskać od właściciela oryginały zdjęć i potwierdzenie zgód klientów na publikację poza platformami społecznościowymi.
 
-Po uzyskaniu praw do materiałów należy:
-
-1. dodać zoptymalizowane pliki AVIF/WebP do `public/portfolio/`;
-2. rozszerzyć rekordy w `src/data/portfolio.ts` o ścieżkę, opis alternatywny, autora i potwierdzenie praw;
-3. zastąpić warstwę abstrakcyjną w `src/components/portfolio-art.tsx` komponentem `next/image`;
-4. zachować identyfikatory źródłowe G01–G17, aby nie zgubić powiązania z `PORTFOLIO_CATALOG.md`;
-5. przeprowadzić ponowną kontrolę kadrowania, tekstów alternatywnych i wydajności.
-
-Abstrakcyjna karta `public/og.png` została wygenerowana specjalnie dla projektu. Nie zawiera tatuażu, postaci ani imitacji portfolio.
+Karta `public/og.png` została przygotowana specjalnie dla aktualnej identyfikacji serwisu.
 
 ## Źródła robocze
 

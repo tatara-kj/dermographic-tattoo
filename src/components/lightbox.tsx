@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { PortfolioArt } from "@/components/portfolio-art";
 import { PortfolioItem } from "@/data/portfolio";
@@ -132,6 +132,9 @@ export function Lightbox({ items, index, onChange, onClose }: LightboxProps) {
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
+            <a className="source-link" href={item.sourceUrl} target="_blank" rel="noreferrer">
+              Oryginalny post <ExternalLink aria-hidden="true" size={17} />
+            </a>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import { PortfolioItem } from "@/data/portfolio";
+import Image from "next/image";
+import type { PortfolioItem } from "@/data/portfolio";
 
 export function PortfolioArt({
   item,
@@ -8,22 +9,20 @@ export function PortfolioArt({
   priorityLabel?: string;
 }) {
   return (
-    <div
-      className={`portfolio-art portfolio-art--${item.variant} portfolio-art--${item.accent}`}
-      role="img"
-      aria-label={`Abstrakcyjny placeholder ${item.mediaKey}; nie przedstawia prawdziwej realizacji`}
-      data-media-key={item.mediaKey}
-    >
-      <div className="portfolio-art__field" aria-hidden="true">
-        <i className="portfolio-art__ring" />
-        <i className="portfolio-art__line" />
-        <i className="portfolio-art__mark" />
-      </div>
+    <div className="portfolio-art" data-source-id={item.sourceId}>
+      <Image
+        className="portfolio-art__image"
+        src={item.imageSrc}
+        alt={item.imageAlt}
+        fill
+        sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 42vw"
+        priority={priorityLabel === "01 / HERO"}
+      />
+      <div className="portfolio-art__shade" aria-hidden="true" />
       <div className="portfolio-art__labels" aria-hidden="true">
         <span>{priorityLabel ?? item.sourceId}</span>
-        <span>Placeholder / prawa do potwierdzenia</span>
+        <span>Realizacja / {item.sourceLabel}</span>
       </div>
-      <strong aria-hidden="true">{item.mediaKey}</strong>
     </div>
   );
 }

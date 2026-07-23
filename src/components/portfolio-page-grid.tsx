@@ -8,6 +8,7 @@ const allowedFilters: PortfolioCategory[] = [
   "realizm-portret",
   "fantasy-narracja",
   "zwierze-ornament",
+  "linework-lettering",
 ];
 
 export function PortfolioPageGrid({ items }: { items: PortfolioItem[] }) {

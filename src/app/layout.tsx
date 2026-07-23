@@ -52,7 +52,8 @@ const structuredData = {
     {
       "@type": "Person",
       name: siteConfig.artist,
-      description: "Osoba prowadząca markę Dermographic Tattoo według CEIDG.",
+      description: "Artysta związany z marką Dermographic Tattoo.",
+      sameAs: [siteConfig.instagramUrl, siteConfig.facebookUrl],
     },
   ],
 };

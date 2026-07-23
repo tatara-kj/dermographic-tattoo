@@ -8,7 +8,7 @@ export function StatusBanner() {
       <div className="status-banner__inner">
         <CircleAlert aria-hidden="true" size={17} strokeWidth={1.8} />
         <p>{siteConfig.status}</p>
-        <Link href="/kontakt">Sprawdź status</Link>
+        <Link href="/kontakt">Kontakt i status</Link>
       </div>
     </aside>
   );

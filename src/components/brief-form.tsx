@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, Check, FileImage, ShieldCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Copy, ExternalLink, FileImage, ShieldCheck, X } from "lucide-react";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { DemoCalendar } from "@/components/demo-calendar";
+import { siteConfig } from "@/data/site";
 
 type FormDataState = {
   name: string;
@@ -45,6 +46,7 @@ export function BriefForm() {
   const [errors, setErrors] = useState<string[]>([]);
   const [files, setFiles] = useState<FilePreview[]>([]);
   const [complete, setComplete] = useState(false);
+  const [copied, setCopied] = useState(false);
   const objectUrlsRef = useRef(new Set<string>());
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -76,7 +78,7 @@ export function BriefForm() {
       if (!form.size.trim()) nextErrors.push("Podaj przybliżony rozmiar w centymetrach.");
     }
     if (step === 3 && !form.consent) {
-      nextErrors.push("Potwierdź, że rozumiesz demonstracyjny charakter formularza.");
+      nextErrors.push("Potwierdź, że rozumiesz lokalny charakter kreatora briefu.");
     }
     setErrors(nextErrors);
     return nextErrors.length === 0;
@@ -118,6 +120,24 @@ export function BriefForm() {
     setFiles([]);
     setStep(0);
     setComplete(false);
+    setCopied(false);
+  };
+
+  const summaryText = [
+    `Imię: ${form.name}`,
+    `Kontakt: ${form.email || form.phone} (${form.channel})`,
+    `Motyw: ${form.motif}`,
+    `Miejsce i rozmiar: ${form.placement}, ${form.size}`,
+    `Kolorystyka: ${form.color}`,
+    `Budżet: ${form.budget}`,
+    `Pierwszy tatuaż: ${form.firstTattoo}`,
+    `Preferowany termin: ${form.preferredDate || "do ustalenia"}`,
+    `Liczba referencji: ${files.length}`,
+  ].join("\n");
+
+  const copySummary = async () => {
+    await navigator.clipboard.writeText(summaryText);
+    setCopied(true);
   };
 
   const submit = (event: FormEvent) => {
@@ -131,19 +151,21 @@ export function BriefForm() {
     return (
       <section className="brief-complete" aria-live="polite">
         <span className="brief-complete__icon"><Check aria-hidden="true" /></span>
-        <p className="eyebrow">Koniec demonstracji</p>
-        <h2>Brief jest gotowy. Niczego nie wysłaliśmy.</h2>
+        <p className="eyebrow">Brief gotowy</p>
+        <h2>Skopiuj podsumowanie i wyślij je artyście.</h2>
         <p>
-          Dane, preferowany dzień i podglądy plików istniały wyłącznie w tej karcie
-          przeglądarki. Nie powstała rezerwacja ani zapytanie.
+          Kreator nie wysyła niczego automatycznie. Skopiuj treść, a następnie przejdź
+          do oficjalnego profilu Dermographic Tattoo.
         </p>
-        <button
-          className="button button--primary"
-          type="button"
-          onClick={resetForm}
-        >
-          Wypełnij demonstrator ponownie
-        </button>
+        <div className="button-row">
+          <button className="button button--primary" type="button" onClick={copySummary}>
+            <Copy aria-hidden="true" size={18} /> {copied ? "Skopiowano" : "Skopiuj brief"}
+          </button>
+          <a className="button button--ghost" href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
+            Otwórz Instagram <ExternalLink aria-hidden="true" size={18} />
+          </a>
+          <button className="text-button" type="button" onClick={resetForm}>Zacznij od nowa</button>
+        </div>
       </section>
     );
   }
@@ -152,7 +174,7 @@ export function BriefForm() {
     <form className="brief-form" onSubmit={submit} noValidate>
       <div className="brief-form__top">
         <div>
-          <p className="demo-flag">Wersja demonstracyjna — dane nie są wysyłane</p>
+          <p className="demo-flag">Prywatny kreator — nic nie wysyłamy automatycznie</p>
           <h2 ref={headingRef} tabIndex={-1}>{stepLabels[step]}</h2>
         </div>
         <div className="brief-progress" aria-label={`Krok ${step + 1} z ${stepLabels.length}`}>
@@ -194,7 +216,7 @@ export function BriefForm() {
               </label>
             ))}
           </fieldset>
-          <p className="field-hint field--wide">To dane testowe. Nie opuszczają urządzenia i znikną po zamknięciu karty.</p>
+          <p className="field-hint field--wide">Dane pozostają na tym urządzeniu i znikną po zamknięciu karty.</p>
         </div>
       ) : null}
 
@@ -290,7 +312,7 @@ export function BriefForm() {
             <input type="checkbox" checked={form.consent} onChange={(event) => update("consent", event.target.checked)} />
             <span>
               <ShieldCheck aria-hidden="true" />
-              Rozumiem, że to demonstrator: dane nie zostaną wysłane, zapisane ani użyte do rezerwacji.
+              Rozumiem, że kreator przygotowuje wyłącznie lokalne podsumowanie — dane nie są automatycznie wysyłane ani zapisywane na serwerze.
             </span>
           </label>
         </div>
@@ -308,7 +330,7 @@ export function BriefForm() {
           </button>
         ) : (
           <button className="button button--primary" type="submit">
-            Zakończ demonstrację <Check aria-hidden="true" size={18} />
+            Przygotuj podsumowanie <Check aria-hidden="true" size={18} />
           </button>
         )}
       </div>

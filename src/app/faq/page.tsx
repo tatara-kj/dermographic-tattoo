@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Pytania o portfolio i pierwszy tatuaż",
   description:
-    "Odpowiedzi dotyczące statusu Dermographic Tattoo, portfolio, demonstracyjnego briefu i niepotwierdzonych danych.",
+    "Odpowiedzi dotyczące portfolio Dermographic Tattoo, kontaktu, procesu, przygotowania i pierwszego tatuażu.",
   path: "/faq",
 });
 
@@ -15,8 +15,8 @@ export default function FaqPage() {
       <PageHero
         index="06"
         eyebrow="FAQ"
-        title="Jasne odpowiedzi. Bez domysłów."
-        lead="Jeżeli fakt nie został potwierdzony, odpowiedź mówi o tym wprost."
+        title="Jasne odpowiedzi. Bez stresu."
+        lead="Najważniejsze informacje o portfolio, kontakcie, przygotowaniu pomysłu i pierwszym tatuażu."
       />
       <section className="faq-page page-section">
         <div className="faq-list faq-list--large">
@@ -29,7 +29,7 @@ export default function FaqPage() {
         </div>
         <aside className="faq-aside">
           <p className="eyebrow">Nie znalazłeś odpowiedzi?</p>
-          <p>Lista pytań do właściciela znajduje się w dokumentacji projektu. Aktywny kontakt zostanie dodany dopiero po potwierdzeniu danych.</p>
+          <p>Najbezpieczniej napisać bezpośrednio przez oficjalny Instagram lub Facebook. Linki znajdziesz na stronie kontaktowej.</p>
         </aside>
       </section>
     </>

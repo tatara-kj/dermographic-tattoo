@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { PortfolioArt } from "@/components/portfolio-art";
 import { getPortfolioItem, portfolioItems } from "@/data/portfolio";
 import { createPageMetadata } from "@/lib/metadata";
@@ -19,7 +19,7 @@ export async function generateMetadata({
   const item = getPortfolioItem(slug);
   if (!item) return {};
   return createPageMetadata({
-    title: `${item.title} — katalog portfolio`,
+    title: `${item.title} — realizacja`,
     description: item.description,
     path: `/portfolio/${item.slug}`,
   });
@@ -52,18 +52,17 @@ export default async function ProjectPage({
           <h1>{item.title}</h1>
           <p className="lead-small">{item.description}</p>
           <dl className="project-meta">
-            <div><dt>Materiał</dt><dd>{item.mediaKey}</dd></div>
+            <div><dt>Źródło</dt><dd>{item.sourceLabel}</dd></div>
             <div><dt>Orientacja</dt><dd>{item.orientation === "portrait" ? "pionowa" : item.orientation === "landscape" ? "pozioma" : "kwadratowa"}</dd></div>
-            <div><dt>Autorstwo</dt><dd>do potwierdzenia przed publikacją</dd></div>
-            <div><dt>Stan</dt><dd>świeży / wygojony — brak danych</dd></div>
+            <div><dt>Artysta</dt><dd>Wojciech Sokun</dd></div>
+            <div><dt>Studio</dt><dd>Dermographic Tattoo</dd></div>
           </dl>
           <ul className="tag-list" aria-label="Kategorie pracy">
             {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
           </ul>
-          <div className="permission-note">
-            <strong>Dlaczego widzisz placeholder?</strong>
-            <p>Publiczny podgląd nie jest plikiem produkcyjnym. Potrzebne są: oryginał, autor fotografii i zgoda klienta.</p>
-          </div>
+          <a className="source-link" href={item.sourceUrl} target="_blank" rel="noreferrer">
+            Zobacz oryginalną publikację <ExternalLink aria-hidden="true" size={18} />
+          </a>
         </div>
       </div>
       <nav className="project-pagination" aria-label="Nawigacja między projektami">

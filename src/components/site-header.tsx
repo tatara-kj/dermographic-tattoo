@@ -107,7 +107,7 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
-          <p>Portfolio demonstracyjne · Starogard Gdański</p>
+          <p>Wojciech Sokun · Starogard Gdański</p>
         </div>
       ) : null}
     </header>

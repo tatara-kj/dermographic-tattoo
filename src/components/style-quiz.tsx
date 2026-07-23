@@ -17,6 +17,7 @@ const questions: Array<{ question: string; options: QuizOption[] }> = [
       { label: "Twarz", scores: { "realizm-portret": 3 } },
       { label: "Zwierzę", scores: { "zwierze-ornament": 3 } },
       { label: "Scena lub symbol", scores: { "fantasy-narracja": 3 } },
+      { label: "Napis lub ornament", scores: { "linework-lettering": 3 } },
       { label: "Jeszcze nie wiem", scores: {} },
     ],
   },
@@ -26,6 +27,7 @@ const questions: Array<{ question: string; options: QuizOption[] }> = [
       { label: "Spokojny", scores: { "realizm-portret": 2 } },
       { label: "Dramatyczny", scores: { "realizm-portret": 1, "fantasy-narracja": 2 } },
       { label: "Fantastyczny", scores: { "fantasy-narracja": 3 } },
+      { label: "Minimalistyczny", scores: { "linework-lettering": 3 } },
     ],
   },
   {
@@ -40,7 +42,7 @@ const questions: Array<{ question: string; options: QuizOption[] }> = [
   {
     question: "Jaką skalę rozważasz?",
     options: [
-      { label: "Detal", scores: { "zwierze-ornament": 1, "realizm-portret": 1 } },
+      { label: "Detal", scores: { "zwierze-ornament": 1, "realizm-portret": 1, "linework-lettering": 2 } },
       { label: "Średnia", scores: { "realizm-portret": 1 } },
       { label: "Duża kompozycja", scores: { "fantasy-narracja": 2 } },
     ],
@@ -59,6 +61,7 @@ const resultLabels: Record<PortfolioCategory, string> = {
   "realizm-portret": "Realizm i portret",
   "fantasy-narracja": "Fantasy i narracja",
   "zwierze-ornament": "Zwierzę i ornament",
+  "linework-lettering": "Linework i lettering",
 };
 
 export function StyleQuiz() {
@@ -71,6 +74,7 @@ export function StyleQuiz() {
       "realizm-portret": 0,
       "fantasy-narracja": 0,
       "zwierze-ornament": 0,
+      "linework-lettering": 0,
     };
     answers.forEach((answerIndex, questionIndex) => {
       const option = questions[questionIndex]?.options[answerIndex];
@@ -96,7 +100,7 @@ export function StyleQuiz() {
   return (
     <section className="quiz" aria-labelledby="quiz-heading">
       <div className="quiz__intro">
-        <p className="eyebrow">Narzędzie demonstracyjne</p>
+        <p className="eyebrow">Quiz stylu</p>
         <h2 id="quiz-heading">Jaki kierunek pasuje do Twojego pomysłu?</h2>
         <p>
           Pięć krótkich pytań prowadzi do podobnych prac. Wynik nie jest kwalifikacją

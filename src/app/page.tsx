@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, CircleCheck } from "lucide-react";
+import Image from "next/image";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Camera, CircleCheck } from "lucide-react";
 import { PortfolioArt } from "@/components/portfolio-art";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { Reveal } from "@/components/reveal";
@@ -18,7 +19,7 @@ const directions = [
   {
     index: "01",
     title: "Realizm i portret",
-    text: "Twarz, światło i miękkie przejścia tonalne. Kategoria oparta na widocznej próbce portfolio.",
+    text: "Twarz, światło i miękkie przejścia tonalne prowadzone z dużą kontrolą detalu.",
     href: "/portfolio?filter=realizm-portret",
   },
   {
@@ -33,13 +34,19 @@ const directions = [
     text: "Zwierzęce motywy łączone z geometrią, rośliną i oszczędnym akcentem koloru.",
     href: "/portfolio?filter=zwierze-ornament",
   },
+  {
+    index: "04",
+    title: "Linework i lettering",
+    text: "Precyzyjna linia, kaligraficzny rytm i małe formy dopasowane do anatomii.",
+    href: "/portfolio?filter=linework-lettering",
+  },
 ];
 
 const processSteps = [
-  ["01", "Pomysł i brief", "Motyw, miejsce, rozmiar i kilka referencji porządkują kierunek."],
-  ["02", "Rozmowa", "Sposób konsultacji oraz kwalifikacji projektu pozostaje do potwierdzenia."],
-  ["03", "Projekt", "Zasady prezentacji i zmian projektu wymagają odpowiedzi właściciela."],
-  ["04", "Sesja i opieka", "Instrukcja przygotowania i pielęgnacji nie jest jeszcze zatwierdzona."],
+  ["01", "Pomysł i brief", "Motyw, miejsce, rozmiar i kilka referencji wyznaczają pierwszy kierunek."],
+  ["02", "Konsultacja", "Rozmowa porządkuje skalę, styl, kompozycję i realny zakres projektu."],
+  ["03", "Projekt", "Koncepcja jest dopasowywana do anatomii, ruchu ciała i charakteru motywu."],
+  ["04", "Sesja i opieka", "Po wykonaniu pracy otrzymujesz zasady pielęgnacji dopasowane do tatuażu."],
 ];
 
 export default function HomePage() {
@@ -57,8 +64,8 @@ export default function HomePage() {
             który <em>zostaje.</em>
           </h1>
           <p className="lead">
-            Archiwalne portfolio realistycznych i ilustracyjnych kompozycji — od black & grey
-            po kontrolowany akcent koloru.
+            Realistyczne kompozycje, portrety i duże narracyjne projekty — od black & grey
+            po świadomie prowadzony kolor.
           </p>
           <div className="button-row">
             <Link className="button button--primary" href="/portfolio">
@@ -77,9 +84,18 @@ export default function HomePage() {
           <div className="hero-art-frame">
             <PortfolioArt item={heroItem} priorityLabel="01 / HERO" />
           </div>
-          <p>Abstrakcyjny placeholder · finalna fotografia po potwierdzeniu praw</p>
+          <p>Realizacja Wojciecha Sokuna · źródło: oficjalny Instagram</p>
         </div>
         <div className="hero-scratch" aria-hidden="true"><i /><i /></div>
+      </section>
+
+      <section className="proof-strip" aria-label="Dermographic Tattoo w liczbach">
+        <div><strong>249</strong><span>publikacji na profilu</span></div>
+        <div><strong>1k+</strong><span>obserwujących</span></div>
+        <div><strong>4,8 / 5</strong><span>ocena publiczna</span></div>
+        <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
+          <Camera aria-hidden="true" size={19} /> Zobacz Instagram <ArrowUpRight aria-hidden="true" size={18} />
+        </a>
       </section>
 
       <section className="page-section" id="wybrane">
@@ -87,7 +103,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="01 / Wybrane realizacje"
             title="Prace mówią pierwsze."
-            text="Do czasu uzyskania oryginałów i zgód galeria używa autorskich, abstrakcyjnych placeholderów. Nie udają one prawdziwych tatuaży."
+            text="Wybrane realizacje z oficjalnego portfolio Wojciecha Sokuna. Kliknij zdjęcie, aby otworzyć pełnoekranowy podgląd."
             action={<Link className="text-link" href="/portfolio">Wszystkie realizacje <ArrowUpRight aria-hidden="true" size={19} /></Link>}
           />
         </Reveal>
@@ -97,7 +113,7 @@ export default function HomePage() {
       <section className="directions-section">
         <Reveal>
           <p className="eyebrow">02 / Język prac</p>
-          <h2>Trzy kierunki.<br /><em>Jeden rytm.</em></h2>
+          <h2>Cztery kierunki.<br /><em>Jeden charakter.</em></h2>
         </Reveal>
         <div className="directions-list">
           {directions.map((direction, index) => (
@@ -115,9 +131,14 @@ export default function HomePage() {
 
       <section className="artist-intro page-section">
         <Reveal className="artist-intro__portrait">
-          <div className="artist-placeholder" role="img" aria-label="Placeholder na portret Wojciecha Sokuna; fotografia nie została jeszcze zatwierdzona">
-            <span>WS</span>
-            <p>portrait-artist-01</p>
+          <div className="artist-work-frame">
+            <Image
+              src={portfolioItems[1].imageSrc}
+              alt={portfolioItems[1].imageAlt}
+              fill
+              sizes="(max-width: 860px) 100vw, 50vw"
+            />
+            <span>Realizacja / Wojciech Sokun</span>
           </div>
         </Reveal>
         <Reveal className="artist-intro__copy" delay={100}>
@@ -128,9 +149,8 @@ export default function HomePage() {
             została zarejestrowana w Starogardzie Gdańskim w 2015 roku.
           </p>
           <p>
-            Zachowane realizacje tworzą portfolio oparte na portrecie, zwierzęciu,
-            narracji i mocnym kontraście. Historia artystyczna oraz aktualny zakres pracy
-            wymagają uzupełnienia przez właściciela.
+            Portfolio pokazuje szeroki warsztat: od portretu i miękkich przejść black & grey,
+            przez motywy zwierzęce, po rozbudowane kompozycje narracyjne oraz lettering.
           </p>
           <Link className="text-link" href="/o-artyscie">
             Więcej o artyście <ArrowUpRight aria-hidden="true" size={19} />
@@ -141,9 +161,9 @@ export default function HomePage() {
       <section className="process-preview page-section">
         <Reveal>
           <SectionHeading
-            eyebrow="04 / Proces — szkic"
+            eyebrow="04 / Proces"
             title="Pomysł potrzebuje dobrej ramy."
-            text="Poniższa ścieżka jest szkieletem demonstracyjnym. Aktualny sposób współpracy nie został potwierdzony."
+            text="Dobrze przygotowany pomysł pozwala sprawniej przejść od pierwszej rozmowy do kompozycji dopasowanej do ciała."
           />
         </Reveal>
         <div className="process-grid">
@@ -206,12 +226,12 @@ export default function HomePage() {
         <div>
           <h2>Portfolio jest gotowe do oglądania.<br /><em>Zapisy — nie.</em></h2>
           <p>
-            Według CEIDG działalność pozostaje zawieszona od 1 marca 2025 roku.
-            Formularz briefu jest interaktywną demonstracją i niczego nie wysyła.
+            Według publicznego wpisu CEIDG działalność pozostaje zawieszona od 1 marca 2025 roku.
+            Portfolio i profile społecznościowe są dostępne, ale termin należy potwierdzić bezpośrednio.
           </p>
           <div className="button-row">
             <Link className="button button--primary" href="/kontakt">
-              Sprawdź status i demo briefu <ArrowRight aria-hidden="true" size={18} />
+              Kontakt, mapa i kreator briefu <ArrowRight aria-hidden="true" size={18} />
             </Link>
             <a className="button button--ghost" href={siteConfig.ceidgUrl} target="_blank" rel="noreferrer">
               Oficjalny wpis CEIDG <ArrowUpRight aria-hidden="true" size={18} />

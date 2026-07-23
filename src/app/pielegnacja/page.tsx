@@ -3,7 +3,7 @@ import { PageHero } from "@/components/page-hero";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
-  title: "Pielęgnacja — instrukcja w przygotowaniu",
+  title: "Pielęgnacja i bezpieczeństwo",
   description:
     "Strona nie publikuje niezatwierdzonych porad medycznych. Zobacz bezpieczną checklistę organizacyjną i zakres treści do uzupełnienia.",
   path: "/pielegnacja",
@@ -22,13 +22,13 @@ export default function AftercarePage() {
     <>
       <PageHero
         index="05"
-        eyebrow="Treść wstrzymana"
-        title="Pielęgnacja — instrukcja w przygotowaniu."
+        eyebrow="Bezpieczeństwo"
+        title="Pielęgnacja zaczyna się od instrukcji artysty."
         lead="Nie publikujemy uniwersalnej instrukcji z internetu. Sposób zabezpieczenia i pielęgnacji musi odpowiadać zastosowanej metodzie oraz procedurze artysty."
         aside={<p className="page-note">Ta strona nie zastępuje konsultacji medycznej.</p>}
       />
       <section className="aftercare-plan page-section">
-        <p className="eyebrow">Zakres do uzupełnienia</p>
+        <p className="eyebrow">Co warto potwierdzić</p>
         <div className="aftercare-plan__grid">
           {[
             ["01", "Pierwsze godziny", "Wytyczne właściciela + data aktualizacji"],
@@ -48,7 +48,7 @@ export default function AftercarePage() {
       />
       <aside className="medical-note page-section">
         <strong>Nietypowa reakcja?</strong>
-        <p>Skontaktuj się z odpowiednim specjalistą. Ta demonstracyjna strona nie diagnozuje i nie obiecuje bezpieczeństwa ani braku ryzyka.</p>
+        <p>Skontaktuj się z odpowiednim specjalistą. Ta strona nie diagnozuje i nie zastępuje konsultacji medycznej.</p>
       </aside>
     </>
   );

@@ -31,7 +31,7 @@ export function SiteFooter() {
       </div>
       <div className="site-footer__bottom">
         <span>© 2026 Dermographic Tattoo</span>
-        <span>Wersja demonstracyjna · dane nie są wysyłane</span>
+        <span>Portfolio Wojciecha Sokuna · fotografie z oficjalnego profilu</span>
       </div>
     </footer>
   );

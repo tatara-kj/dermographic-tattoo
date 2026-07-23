@@ -2,9 +2,9 @@ import { PageHero } from "@/components/page-hero";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
-  title: "Polityka prywatności demonstratora",
+  title: "Prywatność",
   description:
-    "Informacja o lokalnym działaniu funkcji demonstracyjnych portfolio Dermographic Tattoo.",
+    "Informacja o lokalnym działaniu kreatora briefu, zapisanych inspiracji i checklist na stronie Dermographic Tattoo.",
   path: "/polityka-prywatnosci",
 });
 
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
         index="08"
         eyebrow="Prywatność"
         title="Dane zostają w przeglądarce."
-        lead="To demonstracyjna polityka dla lokalnego prototypu. Przed publikacją produkcyjną wymaga uzupełnienia o administratora, hosting, analitykę i retencję."
+        lead="Strona nie ma kont użytkowników ani analityki. Dane kreatora briefu, podglądy plików i zapisane inspiracje pozostają lokalnie w Twojej przeglądarce."
       />
       <article className="legal-content page-section">
         <h2>Formularz briefu</h2>
@@ -26,8 +26,8 @@ export default function PrivacyPage() {
         <p>Postęp jest zapisywany lokalnie tylko po zaznaczeniu opcji „Zapamiętaj na tym urządzeniu”. Można go wyczyścić w każdej chwili.</p>
         <h2>Pliki</h2>
         <p>Wybrane obrazy są używane wyłącznie do lokalnego podglądu. Nie trafiają do chmury, poczty, systemu rezerwacji ani narzędzi analitycznych.</p>
-        <h2>Wersja produkcyjna</h2>
-        <p>Przed uruchomieniem prawdziwego kontaktu trzeba określić podstawę prawną, czas retencji, podmioty przetwarzające i procedurę realizacji praw osób, których dane dotyczą.</p>
+        <h2>Kontakt zewnętrzny</h2>
+        <p>Przejście do Instagrama, Facebooka, Google Maps lub wykonanie połączenia telefonicznego odbywa się poza tą stroną i podlega zasadom prywatności właściwego usługodawcy.</p>
       </article>
     </>
   );
