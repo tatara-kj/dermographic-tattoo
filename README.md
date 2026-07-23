@@ -40,7 +40,7 @@ Opcjonalnie skopiuj `.env.example` do `.env.local` i ustaw publiczny adres stron
 
 Aktualny stan działalności został opisany zgodnie z dokumentacją źródłową: działalność jest zawieszona od 1 marca 2025 r. Serwis nie udaje aktywnego systemu zapisów. Formularz i kalendarz są jawnie oznaczone jako demonstracyjne i niczego nie wysyłają.
 
-Adres, telefon, e-mail, godziny pracy, aktywne kanały kontaktu oraz możliwość wznowienia zapisów wymagają potwierdzenia przez właściciela przed publikacją. Ocena Google Maps 4,8/5 przy 62 opiniach jest opisana jako stan na 23 lipca 2026 r.
+Adres, telefon, e-mail, godziny pracy, aktywne kanały kontaktu oraz możliwość wznowienia zapisów wymagają potwierdzenia przez właściciela przed publikacją. Ocena Google Maps 4,8/5 przy ponad 60 opiniach jest opisana jako stan na 23 lipca 2026 r., ponieważ dokładna liczba opinii może się zmieniać.
 
 ## Zdjęcia portfolio
 

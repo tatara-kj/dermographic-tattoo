@@ -182,7 +182,7 @@ export default function HomePage() {
           ))}
         </div>
         <p className="source-note">
-          Google Maps: 4,8/5 przy 62 opiniach · odczyt 23.07.2026 · ocena może się zmienić. <a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer">Zobacz źródło <span aria-hidden="true">↗</span></a>
+          Google Maps: 4,8/5 przy ponad 60 opiniach · odczyt 23.07.2026 · ocena może się zmienić. <a href={siteConfig.mapsUrl} target="_blank" rel="noreferrer">Zobacz źródło <span aria-hidden="true">↗</span></a>
         </p>
       </section>
 
