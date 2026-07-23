@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { mainNavigation } from "@/data/site";
 import { Wordmark } from "@/components/wordmark";
 
@@ -78,7 +79,7 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {open ? (
+      {open ? createPortal(
         <div
           ref={dialogRef}
           className="mobile-menu"
@@ -108,7 +109,8 @@ export function SiteHeader() {
             ))}
           </nav>
           <p>Wojciech Sokun · Starogard Gdański</p>
-        </div>
+        </div>,
+        document.body,
       ) : null}
     </header>
   );

@@ -383,39 +383,50 @@ main {
   justify-content: center;
   border: 1px solid rgba(241, 235, 221, 0.25);
   background: transparent;
+  color: var(--paper-100);
   cursor: pointer;
 }
 
 .mobile-menu {
   position: fixed;
-  z-index: 120;
+  z-index: 999;
   inset: 0;
   display: flex;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100svh;
   flex-direction: column;
-  padding: 20px 24px 28px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: max(18px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
   background: var(--ink-950);
+  isolation: isolate;
+  overscroll-behavior: contain;
 }
 
 .mobile-menu__top {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: space-between;
 }
 
 .mobile-menu nav {
   display: flex;
-  flex: 1;
+  flex: 0 0 auto;
   flex-direction: column;
-  justify-content: center;
+  width: 100%;
+  padding-block: clamp(24px, 6vh, 64px);
+  margin-block: auto;
 }
 
 .mobile-menu nav a {
   display: grid;
   align-items: baseline;
   border-bottom: var(--border);
-  padding: 13px 0;
+  padding: clamp(10px, 1.8vh, 15px) 0;
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(1.9rem, 8vw, 3rem);
+  font-size: clamp(1.65rem, 7vw, 2.8rem);
   grid-template-columns: 46px 1fr;
   letter-spacing: -0.03em;
 }
@@ -428,9 +439,21 @@ main {
 }
 
 .mobile-menu > p {
+  flex: 0 0 auto;
   margin: 0;
   color: var(--paper-300);
   font-size: 0.78rem;
+}
+
+@media (max-height: 700px) {
+  .mobile-menu nav {
+    padding-block: 16px;
+  }
+
+  .mobile-menu nav a {
+    padding-block: 8px;
+    font-size: clamp(1.45rem, 6.5vw, 2rem);
+  }
 }
 
 .home-hero {
@@ -703,6 +726,8 @@ main {
   overflow-x: auto;
   align-items: center;
   gap: 8px;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x proximity;
   scrollbar-width: thin;
 }
 
@@ -724,6 +749,10 @@ main {
   border-color: var(--oxide-500);
   background: rgba(142, 52, 46, 0.18);
   color: var(--paper-100);
+}
+
+.filter-list button {
+  scroll-snap-align: start;
 }
 
 .portfolio-search {
@@ -2560,6 +2589,11 @@ main {
   .portfolio-toolbar { grid-template-columns: 1fr; }
   .filter-list,
   .portfolio-search { grid-column: auto; }
+  .filter-list {
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .filter-list::-webkit-scrollbar { display: none; }
   .favorites-button { justify-content: center; }
   .favorites-panel li { grid-template-columns: 40px 1fr auto; }
   .direction-row { padding-block: 22px; grid-template-columns: 38px 1fr auto; gap: 12px; }
