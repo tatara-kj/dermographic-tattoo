@@ -1,6 +1,7 @@
+import { Suspense } from "react";
 import { PageHero } from "@/components/page-hero";
-import { PortfolioGrid } from "@/components/portfolio-grid";
-import { PortfolioCategory, portfolioItems } from "@/data/portfolio";
+import { PortfolioPageGrid } from "@/components/portfolio-page-grid";
+import { portfolioItems } from "@/data/portfolio";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
@@ -10,18 +11,7 @@ export const metadata = createPageMetadata({
   path: "/portfolio",
 });
 
-const allowedFilters = ["realizm-portret", "fantasy-narracja", "zwierze-ornament"];
-
-export default async function PortfolioPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ filter?: string }>;
-}) {
-  const params = await searchParams;
-  const initialFilter = allowedFilters.includes(params.filter ?? "")
-    ? (params.filter as PortfolioCategory)
-    : "all";
-
+export default function PortfolioPage() {
   return (
     <>
       <PageHero
@@ -32,7 +22,9 @@ export default async function PortfolioPage({
         aside={<p className="page-note">Filtruj po języku wizualnym, zapisuj inspiracje lokalnie i otwieraj pełnoekranowy podgląd.</p>}
       />
       <section className="portfolio-page-section">
-        <PortfolioGrid items={portfolioItems} initialFilter={initialFilter} />
+        <Suspense fallback={<div className="portfolio-module" aria-busy="true" />}>
+          <PortfolioPageGrid items={portfolioItems} />
+        </Suspense>
       </section>
     </>
   );

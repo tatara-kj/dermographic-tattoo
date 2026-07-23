@@ -1,5 +1,7 @@
 # Dermographic Tattoo — portfolio demonstracyjne
 
+Wersja online: [tatara-kj.github.io/dermographic-tattoo](https://tatara-kj.github.io/dermographic-tattoo/)
+
 Kompletna, lokalna implementacja serwisu portfolio w Next.js 16, React 19 i TypeScript. Projekt jest oparty na materiałach strategicznych z katalogu nadrzędnego, ale celowo nie publikuje niepotwierdzonych danych kontaktowych ani cudzych zdjęć.
 
 ## Uruchomienie
